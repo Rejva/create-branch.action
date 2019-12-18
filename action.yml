@@ -1,0 +1,15 @@
+name: 'Create branch'
+description: 'Create a branch on GitHub'
+inputs:
+  github-token:
+    description: 'Token for the repository'
+    required: true
+  branch-name:
+    description: 'Name of the branch to create'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github-token }}
+    - ${{ inputs.branch-name }}
