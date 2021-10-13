@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  # Triggers the workflow on push or pull request events
+  push:
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Set the target branch name to a random value, which will be used
+      # throughout the tests.
+      - name: Set random branch name
+        run: |
+          random_string=$(tr --delete --complement a-z0-9 < /dev/urandom | head -c 10)
+          echo "::set-output name=target_branch::test-branch-${random_string}"
+        id: branch-generator
+
+      # Show the value of the random target branch
+      - name: Show target branch name
+        run: echo ${{ steps.branch-generator.outputs.target_branch }}
