@@ -1,5 +1,9 @@
 name: 'Create branch'
 description: 'Create a branch on GitHub'
+author: Erwin Janssen
+branding:
+  icon: 'git-branch'
+  color: 'purple'
 inputs:
   github-token:
     description: 'Token for the repository'
