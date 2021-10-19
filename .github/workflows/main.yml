@@ -24,3 +24,10 @@ jobs:
       # Show the value of the random target branch
       - name: Show target branch name
         run: echo ${{ steps.branch-generator.outputs.target_branch }}
+
+      # Create the branch using the action in this repository
+      - name: Create branch
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          branch-name: ${{ steps.branch-generator.outputs.target_branch }}
