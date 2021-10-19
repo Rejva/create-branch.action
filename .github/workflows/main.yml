@@ -25,6 +25,10 @@ jobs:
       - name: Show target branch name
         run: echo ${{ steps.branch-generator.outputs.target_branch }}
 
+      # Checkout the repository to access the action
+      - name: Checkout
+        uses: actions/checkout@v2
+
       # Create the branch using the action in this repository
       - name: Create branch
         uses: ./
